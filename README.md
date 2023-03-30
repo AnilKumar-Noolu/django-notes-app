@@ -42,13 +42,31 @@ Then, we will update the default file for changing the configuration :
 
 Here, we have added a proxy address for the incoming traffic.
 
-After adding this, you need to restart the nginx so that updates will work.  [sudo systemctl restart nginx  -- command to restart nginx ]
+After adding this, you need to restart the nginx so that updates will work.  
+```
+sudo systemctl restart nginx      #command to restart nginx
+```
 
 Now, you can access the application using the IP address.
 
 Now the app is accessible, but we are not able to update or delete the notes here because the backend code is not updated to store such data.
 
 For this, we need to copy all static files of the application to the location Nginx root folder /var/www/html so that we can access it.
+```
+sudo cp -r mynotes/build/* /var/www/html/
+```
+
+Now, we need to update the location /api for the backend page of the server.
+
+Go to /etc/nginx/sites-enabled location and update the default code.
+
+![Screenshot (4)](https://user-images.githubusercontent.com/98457309/228768143-9d3a3e38-2d91-471a-ae8a-5950812022a0.png)
+
+Save it and Restart the nginx service.
+
+After restarting, you can go on the browser and check accessing the notesapp and try updating it.
+
+In this way, we did deploy our web application using the Nginx server.
 
 
 
